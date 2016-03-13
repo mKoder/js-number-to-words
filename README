@@ -53,4 +53,4 @@ Tests - 'npm run test'
 
 Watch & build - 'npm run watch'
 
-Dev server - 'webpack-dev-server --content-base dist'
+Dev server - 'webpack-dev-server --content-base dist' then visit - http://localhost:8080/webpack-dev-server/
