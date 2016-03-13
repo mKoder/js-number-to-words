@@ -1,3 +1,3 @@
-import numberToWord from './components/numberToWord/view.js';
+import numberToWordsView from './components/numberToWords/view';
 
 export default {};

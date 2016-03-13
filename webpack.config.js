@@ -43,7 +43,7 @@ var config = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         new webpack.NoErrorsPlugin(),
-        //new webpack.optimize.UglifyJsPlugin({minimize: false}),
+        new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new ExtractTextPlugin('../styles/[name].css')
     ],
 

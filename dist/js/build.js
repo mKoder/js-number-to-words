@@ -35,9 +35,9 @@ webpackJsonp([0,1],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _numberToWord = __webpack_require__(3);
+	var _numberToWords = __webpack_require__(3);
 	
-	var _numberToWord2 = _interopRequireDefault(_numberToWord);
+	var _numberToWords2 = _interopRequireDefault(_numberToWords);
 	
 	var _numberValidator = __webpack_require__(4);
 	
@@ -55,9 +55,9 @@ webpackJsonp([0,1],[
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var numberToWordView = function () {
-	    function numberToWordView() {
-	        _classCallCheck(this, numberToWordView);
+	var numberToWordsView = function () {
+	    function numberToWordsView() {
+	        _classCallCheck(this, numberToWordsView);
 	
 	        this.errorMsg = 'Please enter a number between 0-1000';
 	
@@ -72,7 +72,7 @@ webpackJsonp([0,1],[
 	        this.attachEvents();
 	    }
 	
-	    _createClass(numberToWordView, [{
+	    _createClass(numberToWordsView, [{
 	        key: 'attachEvents',
 	        value: function attachEvents() {
 	            var _this = this;
@@ -83,7 +83,7 @@ webpackJsonp([0,1],[
 	
 	                if (number !== false) {
 	
-	                    _this.view.set('words', _numberToWord2.default.convert(number));
+	                    _this.view.set('words', _numberToWords2.default.convert(number));
 	                    _this.view.set('error', '');
 	                } else {
 	
@@ -94,10 +94,10 @@ webpackJsonp([0,1],[
 	        }
 	    }]);
 	
-	    return numberToWordView;
+	    return numberToWordsView;
 	}();
 	
-	exports.default = new numberToWordView();
+	exports.default = new numberToWordsView();
 
 /***/ },
 /* 3 */
@@ -113,9 +113,9 @@ webpackJsonp([0,1],[
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var numberToWord = function () {
-	    function numberToWord() {
-	        _classCallCheck(this, numberToWord);
+	var numberToWords = function () {
+	    function numberToWords() {
+	        _classCallCheck(this, numberToWords);
 	
 	        this.oneToNineteen = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
 	
@@ -131,7 +131,7 @@ webpackJsonp([0,1],[
 	     */
 	
 	
-	    _createClass(numberToWord, [{
+	    _createClass(numberToWords, [{
 	        key: "convert",
 	        value: function convert(number) {
 	
@@ -211,9 +211,8 @@ webpackJsonp([0,1],[
 	
 	            if (remainder > 0) {
 	                words.push("and");
+	                words.push(this.convert(remainder));
 	            }
-	
-	            words.push(this.convertNumberLessThan100(remainder));
 	
 	            return words.join(" ");
 	        }
@@ -262,10 +261,10 @@ webpackJsonp([0,1],[
 	        }
 	    }]);
 	
-	    return numberToWord;
+	    return numberToWords;
 	}();
 	
-	exports.default = new numberToWord();
+	exports.default = new numberToWords();
 
 /***/ },
 /* 4 */
