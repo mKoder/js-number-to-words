@@ -1,0 +1,56 @@
+# JS Number to words 0-1000
+
+JS app which allows a user to convert a number between 0-1000 to English words
+
+## Installation
+
+1) Pre requisites
+
+# This app was developed with node v5.2.0. It probably works with earlier versions but they're untested.
+
+2) Project setup
+
+1. Clone the project and cd into the project directory
+2. 'npm install'
+
+## Core npm dependencies
+
+2.1. Webpack (http://webpack.github.io/)
+
+    Config (/webpack.config.js)
+
+        # Features used
+
+            Entry points - the project has split the core app js from the vendor js. This means faster
+                rebundling after changes, plus allows a more flexible caching strategy
+
+            Loaders - The key one to note here is 'src' which uses babel to transpile the es6
+
+    Webpack is the build tool / module bundler of choice for this project. Why? It makes setting up an ES6
+        based workflow really easy, is a complete ecosystem of build tools, and has for me some killer features.
+        It is set up to allow you to bundle assets with the module they are used by. So, instead
+        of css being included all together, and separate from the JS modules which use those styles, you include
+        the css as a module dependency just like you would any other dependency. This not only keeps assets next
+        to the code they are used by, but allows you to bundle entry points for your app which load only the JS
+        and assets they need.
+
+2.2. Jest
+
+    Jest is the current unit testing tool of choice for this project. Why Jest? Because its built
+        on the familiar Jasmine framework, but its killer feature is it auto-mocks all dependencies.
+        This can be a real time saver and greatly simplify test creation.
+
+2.3. Ractive (http://www.ractivejs.org/)
+
+    Ractive is the virtual DOM rendering library used. This was chosen initially in preference to
+        React.js for example, as it allows the use of moustache templates. I find this a much
+        cleaner approach than using JSX, and think it potentially fits better with a Lean UX workflow.
+        I have however found the lack of community around Ractive restrictive.
+
+## Usage (utilising package.json "scripts")
+
+Tests - 'npm run test'
+
+Watch & build - 'npm run watch'
+
+Dev server - 'webpack-dev-server --content-base dist'
