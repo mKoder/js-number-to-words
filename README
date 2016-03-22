@@ -1,3 +1,5 @@
+<a href='https://coveralls.io/github/mKoder/js-number-to-words?branch=master'><img src='https://coveralls.io/repos/github/mKoder/js-number-to-words/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 # JS Number to words 0-1000
 
 JS app which allows a user to convert a number between 0-1000 to English words
