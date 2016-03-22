@@ -1,4 +1,4 @@
-<a href='https://coveralls.io/github/mKoder/js-number-to-words?branch=master'><img src='https://coveralls.io/repos/github/mKoder/js-number-to-words/badge.svg?branch=master' alt='Coverage Status' /></a>
+[![Coverage Status](https://coveralls.io/repos/github/mKoder/js-number-to-words/badge.svg?branch=master)](https://coveralls.io/github/mKoder/js-number-to-words?branch=master)
 
 # JS Number to words 0-1000
 
