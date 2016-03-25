@@ -14,39 +14,16 @@ class numberToWords {
             "sixty", "seventy", "eighty", "ninety"
          ];
 
-        this.scales = ["thousand", "million", "billion", "trillion"];
+        this.scales = ["", "thousand", "million", "billion", "trillion"];
 
     }
 
-    appendScale(chunk, exp) {
+    appendScale(chunk, digitGroup) {
 
-        var scale;
+        let scale = this.scales[digitGroup];
+        let scaled = chunk + ' ' + scale;
 
-        if(!chunk) {
-            return null;
-        }
-
-        scale = this.scales[exp - 1];
-        return [chunk, scale].join(" ");
-    }
-
-
-    convert(number) {
-
-        return this.splitNumberIntoChunks(number)
-                .map(this.convertChunk)
-                .map(this.appendScale)
-                .reverse()
-                .join(' ');
-
-        /*
-        var string = chunk(810238903242)
-            .map(inEnglish)
-            .map(appendScale)
-            .filter(isTruthy)
-            .reverse()
-            .join(" ");*/
-
+        return scaled;
     }
 
     /**
@@ -56,17 +33,39 @@ class numberToWords {
      * @param number
      * @returns {Array}
      */
-    convertChunk(number) {
+    convert(number) {
 
-        let words = [];
+        let words;
 
         if(number === 0) {
             words = 'zero';
         }
-        else if(number === 1000) {
-            words = 'one thousand';
+        else {
+
+            words = this.splitNumberIntoChunks(number)
+                .map(this.convertChunk, this)
+                .map(this.appendScale, this)
+                .reverse()
+                .filter(digitGroup => digitGroup !== ' ')
+                .join(', ');
+            
         }
-        else if(number < 20) {
+
+        return words;
+
+    }
+
+    /**
+     * Converts a chunk 0-999 into its word representation
+     *
+     * @param number
+     * @returns {Array}
+     */
+    convertChunk(number, chunkIndex) {
+
+        let words = [];
+
+        if(number < 20) {
            words = this.convertNumberLessThan20(number);
         }
         else if(number < 100) {
@@ -75,6 +74,8 @@ class numberToWords {
         else {
             words = this.convertNumberGreaterThan100(number);
         }
+
+        //console.log('Chunk '+chunkIndex+':', number);
 
         return words;
     }
@@ -129,7 +130,7 @@ class numberToWords {
 
         if(remainder > 0) {
             words.push("and");
-            words.push(this.convert(remainder));
+            words.push(this.convertChunk(remainder));
         }
 
         return words.join(" ");
@@ -170,7 +171,7 @@ class numberToWords {
     }
 
     /**
-     * Splits a large number into chucks on 0-999
+     * Splits a large number into chucks of 0-999
      *
      * @param number
      */
@@ -180,7 +181,9 @@ class numberToWords {
 
         while(number > 0) {
 
-            thousands.push(number % 1000);
+            let chunk = number % 1000;
+
+            thousands.push(chunk);
             number = Math.floor(number / 1000);
         }
 

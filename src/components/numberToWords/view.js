@@ -7,7 +7,7 @@ class numberToWordsView {
 
     constructor() {
 
-        this.errorMsg = 'Please enter a number between 0-1000';
+        this.errorMsg = 'Please enter a number';
 
         this.view = new Ractive({
 
@@ -25,7 +25,7 @@ class numberToWordsView {
 
         this.view.on( 'updateValue', (event) => {
 
-            let number = numberValidator.getValidIntegerFromString(event.node.value, 0, 1000);
+            let number = numberValidator.getValidIntegerFromString(event.node.value);
 
             if(number !== false) {
 

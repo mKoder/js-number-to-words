@@ -9,20 +9,19 @@ class numberValidator {
      * @param numString
      * @returns {*}
      */
-    static getValidIntegerFromString(numString, rangeMin, rangeMax) {
-
-        let number = false;
+    static getValidIntegerFromString(numString, rangeMin=0, rangeMax=0) {
 
         if(numberValidator.isStringValueValidInteger(numString)) {
 
             let number = parseInt(numString);
 
-            if(number >= rangeMin && number <= rangeMax) {
+            if((rangeMax > 0) && (number >= rangeMin && number <= rangeMax) || (rangeMax == 0)) {
                 return number;
             }
+
         }
 
-        return number;
+        return false;
     }
 
     /**
